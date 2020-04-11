@@ -120,6 +120,37 @@ class LoginController < ApplicationController
         redirect_to login_url
     end
 
+    def filter_order
+        # SELECT * FROM orders WHERE total_amount > 20;
+        orders = Order.where("total_amount > 20")
+        orders = Order.where("total_amount > ?", 20)
+
+        # SELECT * FROM orders WHERE total_amount = 20;
+        orders = Order.where("total_amount": 20)
+
+        #SELECT * FROM orders WHERE total_amount between 20 and 30;
+        range = 20..30
+        orders = Order.where("total_amount": range)
+    end
+
+    def get_order_by_selected_order_item
+        # SELECT orders.*
+        # WHERE orders
+        # JOIN order_items_details
+        # ON orders.id = order_items_details.order_id
+        # WHERE order_items_details.item_code = "12345";
+
+        orders = Order.joins(:order_items_details).where("order_items_details.item_code": "12345")
+
+        # SELECT orders.*
+        # WHERE orders
+        # JOIN order_items_details
+        # ON orders.id = order_items_details.order_id
+        # WHERE order_items_details.total_amount  > 200;
+
+        orders = Order.joins(:order_items_details).where("order_items_details.total_amount > ?", 200)
+    end
+
     def set_user
         @user = User.find(params[:id])
     end
