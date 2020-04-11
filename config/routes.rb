@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   member do
     get :record
     get :add
-    post :update_user
 
+    post :update_user
+    post :create_user_order
+    post :create_user_order_with_attributes
 
   end
 

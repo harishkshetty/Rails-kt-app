@@ -16,6 +16,8 @@
     <td><%=user.email%></td>
     <td><%=user.cityname%></td>
     <td><%= button_to "Edit", {:controller => "login", :action => "add", :id => user.id}, {:method => "get"}  %></td>
+    <td><%= button_to "Create Order", {:controller => "login", :action => "create_user_order", :id => user.id}, {:method => "post"}  %></td>
+    <td><%= button_to "Create Order with Attributes", {:controller => "login", :action => "create_user_order_with_attributes", :id => user.id}, {:method => "post"}  %></td>
   </tr>
   <% end %>
 </table>
