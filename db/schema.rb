@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_041642) do
+ActiveRecord::Schema.define(version: 2020_04_11_073135) do
+
+  create_table "order_deliver_details", force: :cascade do |t|
+    t.integer "order_id"
+    t.string "postal_code"
+    t.string "street_name"
+    t.string "block_name"
+    t.string "floor_number"
+    t.string "house_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_items_details", force: :cascade do |t|
+    t.integer "order_id"
+    t.string "item_code"
+    t.string "item_name"
+    t.float "price"
+    t.integer "qty"
+    t.float "discount"
+    t.float "total_discount"
+    t.float "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "order_ref"
+    t.float "total_amount"
+    t.float "total_discount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

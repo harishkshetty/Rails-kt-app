@@ -32,7 +32,7 @@ class LoginController < ApplicationController
         # update action here
         # set_user
 
-        service = Services::UserService.new(@user, params[:user])
+        service = UserService.new(@user, params[:user])
         service.update_user
 
         redirect_to login_url

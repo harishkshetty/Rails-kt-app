@@ -1,3 +1,5 @@
 class User < ApplicationRecord
-    validates:name,presence:true
+    has_many :orders
+
+    validates :name, presence:true
 end
