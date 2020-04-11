@@ -1,0 +1,22 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>SurName</th>
+      <th>Email</th>
+      <th>CityName</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%=user.name%></td>
+    <td><%=user.surname%></td>
+    <td><%=user.email%></td>
+    <td><%=user.cityname%></td>
+    <td><%= button_to "Edit", {:controller => "login", :action => "add", :id => user.id}, {:method => "get"}  %></td>
+  </tr>
+  <% end %>
+</table>
+
